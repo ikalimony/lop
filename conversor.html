@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades</title>
+    <link rel="stylesheet" href="css/conversor.css">
+    <style>
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversor de Unidades</h1>
+    </header>
+    <center>
+        <div class="btnvoltar">
+        <a href="portfolio.html">Voltar</a>
+        </div>
+        </center>
+    <main>
+        <section class="container">
+            <div class="converter-box">
+                <h2>Celsius para Fahrenheit</h2>
+                <label for="celsius">Celsius:</label>
+                <input type="number" id="celsius" oninput="convertCelsiusToFahrenheit()"><br><br>
+                <p id="fahrenheitResult"></p>
+            </div>
+            <div class="converter-box">
+                <h2>Metros para Centímetros</h2>
+                <label for="meters">Metros:</label>
+                <input type="number" id="meters" oninput="convertMetersToCentimeters()"><br><br>
+                <p id="centimetersResult"></p>
+            </div>
+            <div class="converter-box">
+                <h2>Quilos para Libras</h2>
+                <label for="kilograms">Quilos:</label>
+                <input type="number" id="kilograms" oninput="convertKilogramsToPounds()"><br><br>
+                <p id="poundsResult"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Conversor de Unidades. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function convertCelsiusToFahrenheit() {
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            const fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById('fahrenheitResult').innerText = `${celsius}°C é igual a ${fahrenheit.toFixed(2)}°F.`;
+        }
+
+        function convertMetersToCentimeters() {
+            const meters = parseFloat(document.getElementById('meters').value);
+            const centimeters = meters * 100;
+            document.getElementById('centimetersResult').innerText = `${meters} metros são iguais a ${centimeters} centímetros.`;
+        }
+
+        function convertKilogramsToPounds() {
+            const kilograms = parseFloat(document.getElementById('kilograms').value);
+            const pounds = kilograms * 2.20462;
+            document.getElementById('poundsResult').innerText = `${kilograms} quilos são iguais a ${pounds.toFixed(2)} libras.`;
+        }
+    </script>
+</body>
+</html>
+
+

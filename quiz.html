@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre História do Brasil</title>
+    <link rel="stylesheet" href="css/quiz.css">
+    <style>
+       
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quiz sobre História do Brasil</h1>
+    </header> <br>
+    <center>
+        <div class="btnvoltar">
+        <a href="portfolio.html">Voltar</a>
+        </div>
+        </center>
+    <main>
+        <section class="container">
+            <div id="quiz"></div>
+            <button onclick="submitQuiz()">Enviar Respostas</button>
+            <h2 id="score"></h2>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Quiz sobre História do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "Quem foi o primeiro imperador do Brasil?",
+                options: ["Dom Pedro I", "Dom Pedro II", "Dom João VI", "Dom Manuel I"],
+                answer: "Dom Pedro I"
+            },
+            {
+                question: "Em que ano ocorreu a Proclamação da República?",
+                options: ["1888", "1889", "1890", "1891"],
+                answer: "1889"
+            },
+            {
+                question: "Qual foi a capital do Brasil antes de Brasília?",
+                options: ["São Paulo", "Salvador", "Rio de Janeiro", "Belo Horizonte"],
+                answer: "Rio de Janeiro"
+            },
+            {
+                question: "Quem liderou a Inconfidência Mineira?",
+                options: ["Tiradentes", "Zumbi dos Palmares", "Duque de Caxias", "José Bonifácio"],
+                answer: "Tiradentes"
+            },
+            {
+                question: "Qual tratado definiu as fronteiras entre Brasil e Portugal no período colonial?",
+                options: ["Tratado de Tordesilhas", "Tratado de Madrid", "Tratado de Santo Ildefonso", "Tratado de Badajoz"],
+                answer: "Tratado de Tordesilhas"
+            }
+        ];
+
+        function displayQuiz() {
+            const quizDiv = document.getElementById('quiz');
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question-box');
+                questionDiv.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
+                question.options.forEach(option => {
+                    questionDiv.innerHTML += `
+                        <input type="radio" name="question${index}" value="${option}"> ${option}<br>
+                    `;
+                });
+                quizDiv.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            questions.forEach((question, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                if (selectedOption && selectedOption.value === question.answer) {
+                    score++;
+                }
+            });
+            document.getElementById('score').innerText = `Você acertou ${score} de ${questions.length} perguntas.`;
+        }
+
+        window.onload = displayQuiz;
+    </script>
+</body>
+</html>
